@@ -135,7 +135,7 @@ export default {
     },
     loginAndGetConversation() {
       axios
-        .get('http://localhost:5000/api/jwt/schedule')
+        .get('https://nexmo-emf-schedule.herokuapp.com/api/jwt/schedule')
         .then((response) => {
           // JSON responses are automatically parsed.
           new ConversationClient({ debug: false, rtcstats_enabled: false })
@@ -148,7 +148,7 @@ export default {
   },
   mounted() {
     axios
-      .get('data/nexmo-schedule.json')
+      .get('https://nexmo-emf-schedule.herokuapp.com/data/nexmo-schedule.json')
       .then((response) => {
         // JSON responses are automatically parsed.
         this.talk = response.data.filter((talk) => {
