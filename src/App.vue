@@ -1,31 +1,40 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <div id="app" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title"><img class="mdl-cell--hide-phone" src="https://dashboard.nexmo.com/resources/img/nexmo-logo-w-vonage.svg" /><router-link to="/">EMF Camp Schedule</router-link></span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <router-link class="mdl-navigation__link" to="/">Home</router-link>
+        </nav>
+      </div>
+    </header>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <router-view/>
+      </div>
+    </main>
   </div>
 </template>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.mdl-layout__header-row {
+  padding: 0 40px;
+}
+
+.mdl-layout-title img {
+  margin-top: -8px;
+  margin-right: 10px;
+}
+
+a.router-link-active {
+  color: #ffffff;
+  text-decoration: none;
 }
 </style>
