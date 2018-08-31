@@ -9,13 +9,13 @@
 
       <div :class="day === activeTab ? 'mdl-tabs__panel mdl-grid is-active' : 'mdl-tabs__panel mdl-grid'" :id="day" v-for="day in Object.keys(timeline)" :key="day">
         <div class="mdl-cell mdl-cell--4-col" v-for="track in Object.keys(timeline[day])" :key="track">
-          
+
           <div class="mdl-card mdl-shadow--2dp">
             <div :class="'mdl-card__title mdl-card--expand stage-' + track">
               <h2 class="mdl-card__title-text">Stage {{ track.toUpperCase() }}</h2>
             </div>
           </div>
-          
+
           <ul class="mdl-list">
             <li class="mdl-list__item mdl-list__item--two-line" v-for="talk in timeline[day][track]" :key="talk.id">
               <span class="mdl-list__item-primary-content">
@@ -104,107 +104,89 @@
 
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
-  name: "home",
+  name: 'home',
   data() {
     return {
       timeline: {
         friday: {
           a: undefined,
           b: undefined,
-          c: undefined
+          c: undefined,
         },
         saturday: {
           a: undefined,
           b: undefined,
-          c: undefined
+          c: undefined,
         },
         sunday: {
           a: undefined,
           b: undefined,
-          c: undefined
-        }
+          c: undefined,
+        },
       },
-      activeTab: "friday"
+      activeTab: 'friday',
     };
   },
   created() {
     axios
-      .get("data/nexmo-schedule.json")
-      .then(response => {
-        this.timeline["friday"]["a"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage A" &&
-              talk.start_date.indexOf("2018-08-31") === 0
-            );
-          })
+      .get('data/nexmo-schedule.json')
+      .then((response) => {
+        this.timeline.friday.a = response.data
+          .filter(talk => (
+            talk.venue === 'Stage A' &&
+              talk.start_date.indexOf('2018-08-31') === 0
+          ))
           .sort(this.sortByDate);
-        this.timeline["friday"]["b"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage B" &&
-              talk.start_date.indexOf("2018-08-31") === 0
-            );
-          })
+        this.timeline.friday.b = response.data
+          .filter(talk => (
+            talk.venue === 'Stage B' &&
+              talk.start_date.indexOf('2018-08-31') === 0
+          ))
           .sort(this.sortByDate);
-        this.timeline["friday"]["c"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage C" &&
-              talk.start_date.indexOf("2018-08-31") === 0
-            );
-          })
+        this.timeline.friday.c = response.data
+          .filter(talk => (
+            talk.venue === 'Stage C' &&
+              talk.start_date.indexOf('2018-08-31') === 0
+          ))
           .sort(this.sortByDate);
-        this.timeline["saturday"]["a"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage A" &&
-              talk.start_date.indexOf("2018-09-01") === 0
-            );
-          })
+        this.timeline.saturday.a = response.data
+          .filter(talk => (
+            talk.venue === 'Stage A' &&
+              talk.start_date.indexOf('2018-09-01') === 0
+          ))
           .sort(this.sortByDate);
-        this.timeline["saturday"]["b"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage B" &&
-              talk.start_date.indexOf("2018-09-01") === 0
-            );
-          })
+        this.timeline.saturday.b = response.data
+          .filter(talk => (
+            talk.venue === 'Stage B' &&
+              talk.start_date.indexOf('2018-09-01') === 0
+          ))
           .sort(this.sortByDate);
-        this.timeline["saturday"]["c"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage C" &&
-              talk.start_date.indexOf("2018-09-01") === 0
-            );
-          })
+        this.timeline.saturday.c = response.data
+          .filter(talk => (
+            talk.venue === 'Stage C' &&
+              talk.start_date.indexOf('2018-09-01') === 0
+          ))
           .sort(this.sortByDate);
-        this.timeline["sunday"]["a"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage A" &&
-              talk.start_date.indexOf("2018-09-02") === 0
-            );
-          })
+        this.timeline.sunday.a = response.data
+          .filter(talk => (
+            talk.venue === 'Stage A' &&
+              talk.start_date.indexOf('2018-09-02') === 0
+          ))
           .sort(this.sortByDate);
-        this.timeline["sunday"]["b"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage B" &&
-              talk.start_date.indexOf("2018-09-02") === 0
-            );
-          })
+        this.timeline.sunday.b = response.data
+          .filter(talk => (
+            talk.venue === 'Stage B' &&
+              talk.start_date.indexOf('2018-09-02') === 0
+          ))
           .sort(this.sortByDate);
-        this.timeline["sunday"]["c"] = response.data
-          .filter(talk => {
-            return (
-              talk.venue === "Stage C" &&
-              talk.start_date.indexOf("2018-09-02") === 0
-            );
-          })
+        this.timeline.sunday.c = response.data
+          .filter(talk => (
+            talk.venue === 'Stage C' &&
+              talk.start_date.indexOf('2018-09-02') === 0
+          ))
           .sort(this.sortByDate);
       })
       .catch(console.error);
@@ -214,7 +196,7 @@ export default {
       a = new Date(a.start_date);
       b = new Date(b.start_date);
       return a > b ? 1 : a < b ? -1 : 0;
-    }
-  }
+    },
+  },
 };
 </script>

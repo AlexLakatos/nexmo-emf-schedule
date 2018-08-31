@@ -86,48 +86,48 @@
 </style>
 
 <script>
-import axios from "axios";
-import ConversationClient from "nexmo-stitch";
+import axios from 'axios';
+import ConversationClient from 'nexmo-stitch';
 
 export default {
-  name: "talk",
+  name: 'talk',
   data() {
     return {
       loading: true,
       talk: undefined,
-      caption: "There is no caption yet, please check back later.",
-      live: false
+      caption: 'There is no caption yet, please check back later.',
+      live: false,
     };
   },
   methods: {
     getConversation(app) {
-      console.log("*** Logged into app", app);
+      console.log('*** Logged into app', app);
       return app.getConversation(this.talk.conversation_id);
     },
     setConversation(conversation) {
-      conversation.getEvents().then(events => {
+      conversation.getEvents().then((events) => {
         if (
           events.size > 1 &&
-          this.caption === "There is no caption yet, please check back later."
+          this.caption === 'There is no caption yet, please check back later.'
         ) {
-          this.caption = "";
+          this.caption = '';
         }
 
         events.forEach((value, key) => {
-          if (value.type === "text") {
+          if (value.type === 'text') {
             this.caption += value.body.text;
           }
         });
 
         this.loading = false;
       });
-      conversation.on("text", (sender, message) => {
+      conversation.on('text', (sender, message) => {
         this.live = true;
 
         if (
-          this.caption === "There is no caption yet, please check back later."
+          this.caption === 'There is no caption yet, please check back later.'
         ) {
-          this.caption = "";
+          this.caption = '';
         }
 
         this.caption += message.body.text;
@@ -135,8 +135,8 @@ export default {
     },
     loginAndGetConversation() {
       axios
-        .get("http://localhost:5000/api/jwt/schedule")
-        .then(response => {
+        .get('http://localhost:5000/api/jwt/schedule')
+        .then((response) => {
           // JSON responses are automatically parsed.
           new ConversationClient({ debug: false, rtcstats_enabled: false })
             .login(response.data.user_jwt)
@@ -144,19 +144,19 @@ export default {
             .then(this.setConversation);
         })
         .catch(console.error);
-    }
+    },
   },
   mounted() {
     axios
-      .get("data/nexmo-schedule.json")
-      .then(response => {
+      .get('data/nexmo-schedule.json')
+      .then((response) => {
         // JSON responses are automatically parsed.
-        this.talk = response.data.filter(talk => {
+        this.talk = response.data.filter((talk) => {
           if (talk.slug === this.$route.params.slug) return talk;
         })[0];
       })
       .then(this.loginAndGetConversation)
       .catch(console.error);
-  }
+  },
 };
 </script>
