@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.3c0fd864b61399dc9a303f76d3828f86.js"
+  "/precache-manifest.7f922fc11fba846a0b806120309433bc.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "nexmo-emf-schedule"});
