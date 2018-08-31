@@ -46,6 +46,12 @@ app.get('/api/schedule.json', (req, res) => {
   res.json(JSON.parse(fs.readFileSync('./public/data/nexmo-schedule.json', 'utf8')));
 });
 
+app.get('/api/schedule/:talkId', (req, res) => {
+  res.json(JSON.parse(fs.readFileSync('./public/data/nexmo-schedule.json', 'utf8')).filter((talk) => {
+    return talk.id == req.params.talkId
+  })[0]);
+});
+
 const port = process.env.PORT || 5000;
 app.listen(port);
 
