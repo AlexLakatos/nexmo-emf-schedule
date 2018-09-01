@@ -11,15 +11,29 @@
             <h2 class="mdl-card__title-text">{{ talk.title }}</h2>
         </div>
         <div class="mdl-card__menu">
-            <span class="mdl-chip">
-                <span class="mdl-chip__text">{{ talk.venue }}</span>
-            </span>
-            <span class="mdl-chip" v-if="live">
-                <span class="mdl-chip__text">Live</span>
-            </span>
+          <span class="mdl-chip">
+              <span class="mdl-chip__text">{{ talk.venue }}</span>
+          </span>
+          <span class="mdl-chip" v-if="live">
+              <span class="mdl-chip__text">Live</span>
+          </span>
         </div>
         <div class="mdl-card__supporting-text">
-            {{ talk.description }}
+          <span v-if="!live">
+            <span class="mdl-chip">
+                <span class="mdl-chip__text">{{ talk.start_date.split(' ')[0] }}</span>
+            </span>
+            <span class="mdl-chip">
+                <span class="mdl-chip__text">{{ talk.start_time }}</span>
+            </span>
+            <span class="mdl-chip">
+                <span class="mdl-chip__text"><i class="material-icons time-spacer">chevron_right</i></span>
+            </span>
+            <span class="mdl-chip">
+                <span class="mdl-chip__text">{{ talk.end_time }}</span>
+            </span>
+          </span>
+            <p>{{ talk.description }}</p>
         </div>
         <div class="mdl-card__supporting-text caption">
             {{ caption }}
@@ -30,6 +44,12 @@
 </template>
 
 <style>
+.time-spacer {
+  font-size: 9px;
+  vertical-align: middle;
+  transform: scale(3);
+}
+
 .mdl-typography--display-4,
 .mdl-progress {
   width: 100%;
@@ -69,6 +89,11 @@
   padding: 16px 0;
 }
 
+.mdl-card__supporting-text .mdl-chip {
+  background-color: #4051b5;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
 .mdl-card__supporting-text.caption {
   border-top: 3px solid #4051b5;
 }

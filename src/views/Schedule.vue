@@ -133,70 +133,64 @@
 
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
-  name: "home",
+  name: 'home',
   data() {
     return {
       timeline: {
         a: undefined,
         b: undefined,
-        c: undefined
+        c: undefined,
       },
-      day: undefined
+      day: undefined,
     };
   },
   created() {
     axios
-      .get("https://nexmo-emf-schedule.herokuapp.com/data/nexmo-schedule.json")
-      .then(response => {
+      .get('https://nexmo-emf-schedule.herokuapp.com/data/nexmo-schedule.json')
+      .then((response) => {
         this.day = this.$route.params.day;
-        var dayString = "";
+        let dayString = '';
         switch (this.day) {
-          case "friday":
-            dayString = "2018-08-31";
+          case 'friday':
+            dayString = '2018-08-31';
             break;
-          case "saturday":
-            dayString = "2018-09-01";
+          case 'saturday':
+            dayString = '2018-09-01';
             break;
-          case "sunday":
-            dayString = "2018-09-02";
+          case 'sunday':
+            dayString = '2018-09-02';
             break;
 
           default:
             break;
         }
         this.timeline.a = response.data
-          .filter(
-            talk =>
-              talk.venue === "Stage A" &&
-              talk.start_date.indexOf(dayString) === 0
-          )
+          .filter(talk =>
+            talk.venue === 'Stage A' &&
+              talk.start_date.indexOf(dayString) === 0)
           .sort(this.sortByDate);
         this.timeline.b = response.data
-          .filter(
-            talk =>
-              talk.venue === "Stage B" &&
-              talk.start_date.indexOf(dayString) === 0
-          )
+          .filter(talk =>
+            talk.venue === 'Stage B' &&
+              talk.start_date.indexOf(dayString) === 0)
           .sort(this.sortByDate);
         this.timeline.c = response.data
-          .filter(
-            talk =>
-              talk.venue === "Stage C" &&
-              talk.start_date.indexOf(dayString) === 0
-          )
+          .filter(talk =>
+            talk.venue === 'Stage C' &&
+              talk.start_date.indexOf(dayString) === 0)
           .sort(this.sortByDate);
       })
       .catch(console.error);
   },
   methods: {
     sortByDate(a, b) {
-      a = Date.parse(a.start_date.replace(/\ /, "T"));
-      b = Date.parse(b.start_date.replace(/\ /, "T"));
+      a = Date.parse(a.start_date.replace(/\ /, 'T'));
+      b = Date.parse(b.start_date.replace(/\ /, 'T'));
       return a > b ? 1 : a < b ? -1 : 0;
-    }
-  }
+    },
+  },
 };
 </script>

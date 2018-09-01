@@ -3,16 +3,14 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 
 Vue.use(Router);
-var day = new Date().getDay()
+let day = new Date().getDay();
 
 if (day < 6) {
-  day = 'friday'
+  day = 'friday';
+} else if (day == 6) {
+  day = 'saturday';
 } else {
-  if (day == 6) {
-    day = 'saturday'
-  } else {
-    day = 'sunday'
-  }
+  day = 'sunday';
 }
 
 export default new Router({
@@ -21,7 +19,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      redirect: `/schedule/${day}`
+      redirect: `/schedule/${day}`,
     },
     {
       path: '/talk/:slug',

@@ -7,7 +7,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
-var history = require('connect-history-api-fallback');
+const history = require('connect-history-api-fallback');
 
 const app = express();
 app.use(bodyParser.json());
@@ -49,9 +49,7 @@ app.get('/api/schedule.json', (req, res) => {
 });
 
 app.get('/api/schedule/:talkId.json', (req, res) => {
-  res.json(JSON.parse(fs.readFileSync('./public/data/nexmo-schedule.json', 'utf8')).filter((talk) => {
-    return talk.id == req.params.talkId
-  })[0]);
+  res.json(JSON.parse(fs.readFileSync('./public/data/nexmo-schedule.json', 'utf8')).filter(talk => talk.id == req.params.talkId)[0]);
 });
 
 const port = process.env.PORT || 5000;
