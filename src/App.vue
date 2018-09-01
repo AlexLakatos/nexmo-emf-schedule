@@ -5,7 +5,7 @@
         <span class="mdl-layout-title"><img class="mdl-cell--hide-phone" src="https://dashboard.nexmo.com/resources/img/nexmo-logo-w-vonage.svg" /><router-link to="/">EMF Camp Schedule</router-link></span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <router-link class="mdl-navigation__link" to="/">Home</router-link>
+          <a class="mdl-navigation__link" href="/">Home</a>
         </nav>
       </div>
     </header>
@@ -33,7 +33,7 @@
   margin-right: 10px;
 }
 
-a.router-link-active {
+.mdl-layout__header a.router-link-active {
   color: #ffffff;
   text-decoration: none;
 }
