@@ -39,7 +39,7 @@
 </template>
 
 <style>
-.mdl-tabs__tab.is-active {
+.mdl-tabs__tab {
   outline: none;
 }
 
