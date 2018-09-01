@@ -120,6 +120,14 @@
   .mdl-tabs__tab {
     padding: 0 16px;
   }
+
+  .mdl-tabs__tab-bar {
+    position: sticky;
+    -webkit-position: sticky;
+    top: 0px;
+    z-index: 9999;
+    background-color: #fff;
+  }
 }
 </style>
 
