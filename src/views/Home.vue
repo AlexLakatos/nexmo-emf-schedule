@@ -193,8 +193,8 @@ export default {
   },
   methods: {
     sortByDate(a, b) {
-      a = new Date(a.start_date);
-      b = new Date(b.start_date);
+      a = Date.parse(a.start_date.replace(/\ /, "T"));
+      b = Date.parse(b.start_date.replace(/\ /, "T"));
       return a > b ? 1 : a < b ? -1 : 0;
     },
   },
