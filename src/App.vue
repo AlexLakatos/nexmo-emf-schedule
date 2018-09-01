@@ -4,8 +4,9 @@
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title"><img class="mdl-cell--hide-phone" src="https://dashboard.nexmo.com/resources/img/nexmo-logo-w-vonage.svg" /><router-link to="/">EMF Camp Schedule</router-link></span>
         <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <router-link class="mdl-navigation__link" to="/">Home</router-link>
+        <nav class="mdl-navigation">
+          powered with ❤️ by <img class="mdl-cell--hide-phone" src="https://dashboard.nexmo.com/resources/img/nexmo-logo-w-vonage.svg" />
+          <router-link class="mdl-navigation__link mdl-layout--large-screen-only" to="/">Home</router-link>
         </nav>
       </div>
     </header>
@@ -24,8 +25,12 @@
   color: #2c3e50;
 }
 
+.mdl-layout__header-row .mdl-navigation__link{
+  padding: 0 0 0 24px;
+}
+
 .mdl-layout__header-row {
-  padding: 0 40px;
+  padding: 0 16px;
 }
 
 .mdl-layout-title img {
