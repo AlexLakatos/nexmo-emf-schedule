@@ -5,6 +5,8 @@
         <span class="mdl-layout-title"><a href="/">EMF Camp Schedule</a></span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
+          <a class="mdl-navigation__link mdl-layout--large-screen-only" href="/about">About</a>
+          <span class="mdl-navigation__link mdl-layout--large-screen-only"> | </span>
           <a class="mdl-navigation__link mdl-layout--large-screen-only" href="/">Home</a>
           <a href="https://developer.nexmo.com" target="_blank" class="love">made with 💙 by <br> <img src="https://dashboard.nexmo.com/resources/img/nexmo-logo-w-vonage.svg" /></a>
         </nav>
@@ -55,6 +57,10 @@ a.love {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.mdl-layout__header-row .mdl-navigation__link {
+  padding: 0 8px;
 }
 
 .mdl-navigation__link{
