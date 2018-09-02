@@ -17,7 +17,7 @@
           </div>
 
           <ul class="mdl-list">
-            <li class="mdl-list__item mdl-list__item--two-line" v-for="talk in timeline[track]" :key="talk.id">
+            <li v-on:click="$router.push({ name: 'talk', params: { slug: talk.slug }})" class="mdl-list__item mdl-list__item--two-line" v-for="talk in timeline[track]" :key="talk.id">
               <span class="mdl-list__item-primary-content">
                 <i class="mdl-list__item-avatar">
                   <span>{{ talk.start_time }}</span>
@@ -28,7 +28,7 @@
                 <span class="mdl-list__item-sub-title">{{ talk.title }}</span>
               </span>
               <span class="mdl-list__item-secondary-content">
-                <router-link class="mdl-list__item-secondary-action" :to="{ name: 'talk', params: { slug: talk.slug } }"><i class="material-icons">chevron_right</i></router-link>
+                <span class="mdl-list__item-secondary-action"><i class="material-icons">chevron_right</i></span>
               </span>
             </li>
           </ul>
@@ -59,6 +59,10 @@
   transition: all 1s cubic-bezier(0.4, 0, 1, 1);
 }
 
+.mdl-list__item {
+  cursor: pointer;
+}
+
 .mdl-list__item-avatar {
   border-radius: 0;
   width: 48px;
@@ -82,6 +86,7 @@
 
 .mdl-list__item-secondary-action .material-icons {
   font-size: 48px;
+  color: #4051b5;
 }
 
 .mdl-tabs.is-upgraded .mdl-tabs__panel.is-active {
@@ -149,7 +154,7 @@ export default {
   },
   created() {
     axios
-      .get('https://nexmo-emf-schedule.herokuapp.com/data/nexmo-schedule.json')
+      .get('/data/nexmo-schedule.json')
       .then((response) => {
         this.day = this.$route.params.day;
         let dayString = '';
