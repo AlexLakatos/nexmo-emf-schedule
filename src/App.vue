@@ -19,10 +19,15 @@
 </template>
 
 <style>
+.mdl-layout-title {
+  margin-top: 15px;
+}
+
 a.love {
   margin-bottom: 0;
   line-height: 18px;
   margin-left: 14px;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
 .love img {
@@ -35,14 +40,25 @@ a.love {
   }
 }
 
+@media (min-width: 480px) {
+  .mdl-layout-title {
+    font-size: 32px;
+    margin-top: 6px;
+  }
+  .mdl-navigation__link {
+    font-size: 18px;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+  }
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
 
-.mdl-layout__header-row .mdl-navigation__link{
-  padding: 0 0 0 24px;
+.mdl-navigation__link{
+  margin-top: 20px;
 }
 
 .mdl-layout__header-row {
