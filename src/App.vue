@@ -6,7 +6,7 @@
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link mdl-layout--large-screen-only" href="/">Home</a>
-          <a href="https://developer.nexmo.com" target="_blank" class="love">made with ❤️ by <br> <img src="https://dashboard.nexmo.com/resources/img/nexmo-logo-w-vonage.svg" /></a>
+          <a href="https://developer.nexmo.com" target="_blank" class="love">made with 💙 by <br> <img src="https://dashboard.nexmo.com/resources/img/nexmo-logo-w-vonage.svg" /></a>
         </nav>
       </div>
     </header>
