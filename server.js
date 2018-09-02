@@ -7,10 +7,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
+var history = require('connect-history-api-fallback');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(history());
 app.use(express.static(`${__dirname}/dist`));
 
 const userAcl = {
@@ -31,7 +33,7 @@ privateKey = Buffer.from(process.env.PRIVATE_KEY.replace(/\\n/g, '\n'), 'utf-8')
 
 // endpoint that doesn't authenticate the user
 // it will simply return a JWT with every request
-app.get('/api/jwt/:user', (req, res) => {
+app.get('/api/jwt/:user.json', (req, res) => {
   const jwt = Nexmo.generateJwt(privateKey, {
     application_id: process.env.APP_ID,
     sub: req.params.user,
@@ -46,7 +48,7 @@ app.get('/api/schedule.json', (req, res) => {
   res.json(JSON.parse(fs.readFileSync('./public/data/nexmo-schedule.json', 'utf8')));
 });
 
-app.get('/api/schedule/:talkId', (req, res) => {
+app.get('/api/schedule/:talkId.json', (req, res) => {
   res.json(JSON.parse(fs.readFileSync('./public/data/nexmo-schedule.json', 'utf8')).filter((talk) => {
     return talk.id == req.params.talkId
   })[0]);
