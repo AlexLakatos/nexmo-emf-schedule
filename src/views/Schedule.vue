@@ -154,7 +154,7 @@ export default {
   },
   created() {
     axios
-      .get('/data/nexmo-schedule.json')
+      .get('https://nexmo-emf-schedule.herokuapp.com/data/nexmo-schedule.json')
       .then((response) => {
         this.day = this.$route.params.day;
         let dayString = '';
